@@ -7,7 +7,6 @@
   
   <meta name="theme-color" content="#0d6efd">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
 
 <body style="background:black; color:white; text-align:center;">
@@ -15,12 +14,17 @@
   <h1>🚀 VPN App</h1>
   <p>Accès rapide à tes fichiers VPN</p>
 
-  <a href="https://sneakyuser.carrd.co">
-    <button onclick="installApp()">📲 Ouvrir</button>
+  <!-- OPEN WEBSITE BUTTON -->
+  <button onclick="openApp()">📲 Ouvrir</button>
+
+  <!-- INSTALL BUTTON -->
+  <br><br>
+  <button onclick="installApp()">⬇️ Installer l'application</button>
 
 <script>
 let deferredPrompt;
 
+// INSTALL APP
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
@@ -36,24 +40,20 @@ function installApp() {
     alert("Ajoute cette page à ton écran d'accueil 📲");
   }
 }
+
+// OPEN YOUR WEBSITE
+function openApp() {
+  window.location.href = "https://sneakyuser.carrd.co";
+}
 </script>
 
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js');
-    }
-  </script>
+<!-- SERVICE WORKER (ONLY ONCE!) -->
 <script>
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js')
     .then(() => console.log("Service Worker Registered"));
 }
 </script>
-  <script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js')
-  .then(() => console.log("Service Worker Registered"));
-}
-  </script>
+
 </body>
 </html>
