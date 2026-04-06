@@ -9,21 +9,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<body style="margin:0;">
+<body style="background:black; color:white; text-align:center;">
 
-  <!-- YOUR WEBSITE INSIDE THE APP -->
-  <iframe 
-    src="https://sneakyuser.carrd.co" 
-    style="border:none; width:100%; height:100vh;">
-  </iframe>
+  <h1>🚀 VPN App</h1>
+  <p>Accès rapide à tes fichiers VPN</p>
 
-  <!-- SERVICE WORKER -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('service-worker.js')
-        .then(() => console.log("Service Worker Registered"));
-    }
-  </script>
+  <!-- OPEN SITE -->
+  <button onclick="openApp()">📲 Ouvrir</button>
+
+  <br><br>
+
+  <!-- INSTALL APP -->
+  <button onclick="installApp()">⬇️ Installer l'application</button>
+
+<script>
+let deferredPrompt;
+
+// INSTALL
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+});
+
+function installApp() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => {
+      deferredPrompt = null;
+    });
+  } else {
+    alert("Ajoute cette page à ton écran d'accueil 📲");
+  }
+}
+
+// OPEN SITE
+function openApp() {
+  window.location.href = "https://sneakyuser.carrd.co";
+}
+</script>
+
+<!-- SERVICE WORKER -->
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js');
+}
+</script>
 
 </body>
 </html>
