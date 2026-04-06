@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+  <meta charset="UTF-8">
   <title>VPN App</title>
 
   <link rel="manifest" href="manifest.json">
@@ -10,97 +11,154 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial;
+      font-family: Arial, sans-serif;
       background: #0b0b0b;
       color: white;
-      text-align: center;
     }
 
-    .container {
+    header {
+      text-align: center;
       padding: 20px;
     }
 
     h1 {
-      font-size: 28px;
+      margin: 10px 0;
+    }
+
+    .container {
+      padding: 15px;
     }
 
     .card {
       background: #1a1a1a;
       padding: 15px;
-      margin: 15px 0;
-      border-radius: 10px;
+      border-radius: 15px;
+      margin-bottom: 15px;
     }
 
-    button {
+    .btn {
+      display: block;
       width: 100%;
       padding: 12px;
       margin-top: 10px;
-      border: none;
-      border-radius: 8px;
       background: #0d6efd;
       color: white;
+      border: none;
+      border-radius: 10px;
       font-size: 16px;
     }
 
-    button:hover {
-      opacity: 0.9;
+    .install-btn {
+      background: green;
     }
   </style>
 </head>
 
 <body>
 
-<div class="container">
-
+<header>
   <h1>🚀 VPN App</h1>
   <p>Accès rapide à tes fichiers VPN</p>
 
-  <!-- FREE FILES -->
+  <button class="btn install-btn" onclick="installApp()">📲 Installer l'application</button>
+</header>
+
+<div class="container">
+
+  <!-- FREE VPN -->
   <div class="card">
-    <h3>🎁 Fichiers gratuits (2 jours)</h3>
-    <p>100MB - 150MB | MTN Cameroun</p>
-    <button onclick="openLink('https://t.me/SNEAKYUSER_BOT')">
-      Obtenir les fichiers
-    </button>
+    <h2>🎁 Fichiers VPN Gratuits (2 jours)</h2>
+    <p>✔ Accès immédiat</p>
+    <p>📅 Durée : 2 jours</p>
+    <p>📊 Données limitées (100MB & 150MB)</p>
+    <p>📡 Compatible MTN Cameroun</p>
+
+    <a href="https://sneakyuser.carrd.co">
+      <button class="btn">📥 Obtenir les fichiers gratuits</button>
+    </a>
   </div>
 
   <!-- PREMIUM -->
   <div class="card">
-    <h3>💎 VPN Premium (30 jours)</h3>
-    <p>250MB / jour • Connexion rapide</p>
-    <button onclick="openLink('https://wa.me/237672334564')">
-      Acheter maintenant
-    </button>
+    <h2>💎 VPN Premium (30 jours)</h2>
+    <p>🚀 250MB / jour</p>
+    <p>📅 Durée : 30 jours</p>
+    <p>⚡ Connexion rapide et stable</p>
+    <p>🔒 Sécurisé</p>
+    <p>💰 Prix : 500 FCFA</p>
+
+    <button class="btn">📲 Acheter maintenant</button>
   </div>
 
-  <!-- TRAINING -->
+  <!-- FORMATION VPN -->
   <div class="card">
-    <h3>🎓 Formation VPN</h3>
-    <p>Apprends à créer tes propres fichiers</p>
-    <button onclick="openLink('https://bizconnectacademy.com/register?ref=ONLINECA')">
-      Accéder à la formation
-    </button>
+    <h2>🎓 Formation VPN</h2>
+    <p>Apprends à créer tes propres fichiers VPN 💰</p>
+    <p>✔ HA Tunnel</p>
+    <p>✔ Dark Tunnel</p>
+    <p>✔ NPV Tunnel</p>
+    <p>✔ Et bien d'autres</p>
+
+    <button class="btn">📩 Me contacter sur WhatsApp</button>
   </div>
 
-  <!-- GROUP -->
+  <!-- DARK TUNNEL -->
   <div class="card">
-    <h3>👥 Groupe Telegram</h3>
-    <p>Rejoins la communauté</p>
-    <button onclick="openLink('https://t.me/+tdfPK4_K-W05YTQ0')">
-      Rejoindre le groupe
-    </button>
+    <h2>🌐 DARK TUNNEL ILLIMITÉ</h2>
+    <p>♾ Connexion illimitée</p>
+    <p>💬 Idéal pour WhatsApp</p>
+    <p>🔒 Stable</p>
+    <p>⚠ Pas pour streaming</p>
+    <p>💰 Prix : 2000 FCFA</p>
+
+    <button class="btn">📩 DM pour la formation</button>
+  </div>
+
+  <!-- PLATFORM -->
+  <div class="card">
+    <h2>🎓 Plateforme de formation</h2>
+    <p>✔ Création de bots WhatsApp</p>
+    <p>✔ TikTok monétisé</p>
+    <p>✔ Canva Pro / CapCut</p>
+    <p>✔ Et plus encore</p>
+    <p>💰 Prix : 1900 FCFA</p>
+
+    <button class="btn">🌍 S’inscrire maintenant</button>
+  </div>
+
+  <!-- TELEGRAM -->
+  <div class="card">
+    <h2>👥 Rejoins notre groupe</h2>
+    <p>Reçois les mises à jour et bonus 🎁</p>
+
+    <button class="btn">👥 Rejoindre le groupe</button>
   </div>
 
 </div>
 
 <script>
-function openLink(url) {
-  window.open(url, "_blank");
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+});
+
+function installApp() {
+  if (deferredPrompt) {
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(() => {
+      deferredPrompt = null;
+    });
+  } else {
+    alert("Ajoute cette page à ton écran d'accueil 📲");
+  }
 }
 
-// SERVICE WORKER
+// REGISTER SERVICE WORKER (ONLY ONCE)
 if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('service-worker.js');
+  navigator.serviceWorker.register('service-worker.js')
+    .then(() => console.log("Service Worker Registered"));
 }
 </script>
 
