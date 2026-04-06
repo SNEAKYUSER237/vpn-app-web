@@ -4,52 +4,101 @@
   <title>VPN App</title>
 
   <link rel="manifest" href="manifest.json">
-  
   <meta name="theme-color" content="#0d6efd">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial;
+      background: #0b0b0b;
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 28px;
+    }
+
+    .card {
+      background: #1a1a1a;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 10px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 8px;
+      background: #0d6efd;
+      color: white;
+      font-size: 16px;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+  </style>
 </head>
 
-<body style="background:black; color:white; text-align:center;">
+<body>
+
+<div class="container">
 
   <h1>🚀 VPN App</h1>
   <p>Accès rapide à tes fichiers VPN</p>
 
-  <!-- OPEN SITE -->
-  <button onclick="openApp()">📲 Ouvrir</button>
+  <!-- FREE FILES -->
+  <div class="card">
+    <h3>🎁 Fichiers gratuits (2 jours)</h3>
+    <p>100MB - 150MB | MTN Cameroun</p>
+    <button onclick="openLink('https://t.me/SNEAKYUSER_BOT')">
+      Obtenir les fichiers
+    </button>
+  </div>
 
-  <br><br>
+  <!-- PREMIUM -->
+  <div class="card">
+    <h3>💎 VPN Premium (30 jours)</h3>
+    <p>250MB / jour • Connexion rapide</p>
+    <button onclick="openLink('https://wa.me/237672334564')">
+      Acheter maintenant
+    </button>
+  </div>
 
-  <!-- INSTALL APP -->
-  <button onclick="installApp()">⬇️ Installer l'application</button>
+  <!-- TRAINING -->
+  <div class="card">
+    <h3>🎓 Formation VPN</h3>
+    <p>Apprends à créer tes propres fichiers</p>
+    <button onclick="openLink('https://bizconnectacademy.com/register?ref=ONLINECA')">
+      Accéder à la formation
+    </button>
+  </div>
+
+  <!-- GROUP -->
+  <div class="card">
+    <h3>👥 Groupe Telegram</h3>
+    <p>Rejoins la communauté</p>
+    <button onclick="openLink('https://t.me/+tdfPK4_K-W05YTQ0')">
+      Rejoindre le groupe
+    </button>
+  </div>
+
+</div>
 
 <script>
-let deferredPrompt;
-
-// INSTALL
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-});
-
-function installApp() {
-  if (deferredPrompt) {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then(() => {
-      deferredPrompt = null;
-    });
-  } else {
-    alert("Ajoute cette page à ton écran d'accueil 📲");
-  }
+function openLink(url) {
+  window.open(url, "_blank");
 }
 
-// OPEN SITE
-function openApp() {
-  window.location.href = "https://sneakyuser.carrd.co";
-}
-</script>
-
-<!-- SERVICE WORKER -->
-<script>
+// SERVICE WORKER
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js');
 }
