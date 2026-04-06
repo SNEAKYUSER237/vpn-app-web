@@ -1,10 +1,10 @@
 {
-  "name": "VPN App",
-  "short_name": "VPN",
-  "start_url": "/",
+  "name": "VPN MTN Cameroun",
+  "short_name": "VPN App",
+  "start_url": "/vpn-app-web/",
   "display": "standalone",
   "background_color": "#000000",
-  "theme_color": "#000000",
+  "theme_color": "#0d6efd",
   "icons": [
     {
       "src": "icon.png",
